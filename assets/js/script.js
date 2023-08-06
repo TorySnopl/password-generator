@@ -1,5 +1,5 @@
 // Assignment code here
-
+//Arrays
 upperArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 lowerArray =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -7,21 +7,25 @@ lowerArray =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'
 numArray =[1,2,3,4,5,6,7,8,9,0];
 
 symArray = ['!','@','#','$','%','^','&','*','=','+'];
-
+// global variables
 let length = 0;
 let pNum = true;
 let pUpper = true;
 let pSym = true;
 
+//function to get user preferences and update global variables
 function getUserPreference() {
   function chooselength() {
     let answer = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
-    if (answer === false || answer<8 || answer>128){
-     alert('please enter a number between 8 and 128');
-     chooselength()
+    
+  if (answer === false){
+    location.reload(true);
+  }else if ( answer<8 || answer>128){
+    alert('please enter a number between 8 and 128');
+    chooselength();
   } else {
-      length = answer;
-      return length;
+    length = answer;
+    return length;
   }
 }; 
 chooselength();
@@ -49,9 +53,8 @@ chooseCharacters();
 
 };
 
+// function to generate password based on user preferences
 function generatePassword(){
-
- 
 
   if (pUpper === true && pNum === true && pSym === true) {
     let strong = upperArray.concat(lowerArray,numArray,symArray);
@@ -97,6 +100,7 @@ function generatePassword(){
   }
 };
 
+// function to match desired password length
 function passLength(text){
   
   let res = ''
