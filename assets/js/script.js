@@ -7,6 +7,7 @@ lowerArray =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'
 numArray =[1,2,3,4,5,6,7,8,9,0];
 
 symArray = ['!','@','#','$','%','^','&','*','=','+'];
+
 // global variables
 let length = 0;
 let pNum = true;
@@ -14,18 +15,16 @@ let pUpper = true;
 let pSym = true;
 
 //function to get user preferences and update global variables
-function getUserPreference() {
-  function chooselength() {
+function getUserPreferences(){  
+function chooselength() {
     let answer = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
-    
-  do {
-    location.reload(true);
-  } while (answer === false);
-
-  if ( answer<8 || answer>128){
+   if (answer === null){
+    alert ('You have selected cancel and will not be provided a password');
+    return;
+  } else if ( answer<8 || answer>128){
     alert('please enter a number between 8 and 128');
     chooselength();
-  } else {
+  } else  {
     length = answer;
     return length;
   }
@@ -132,7 +131,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  getUserPreference();
+  
+getUserPreferences();
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
