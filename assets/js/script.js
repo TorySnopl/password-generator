@@ -8,24 +8,50 @@ numArray =[1,2,3,4,5,6,7,8,9,0];
 
 symArray = ['!','@','#','$','%','^','&','*','=','+'];
 
+let length = 0;
+let pNum = true;
+let pUpper = true;
+let pSym = true;
 
-let length = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
+function getUserPreference() {
+  function chooselength() {
+    let answer = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
+    if (answer === false || answer<8 || answer>128){
+     alert('please enter a number between 8 and 128');
+     chooselength()
+  } else {
+      length = answer;
+      return length;
+  }
+}; 
+chooselength();
 
+function chooseCharacters(){
+pUpper = confirm ('Would you like upper case letters in your password? Press okay to include or cancel to exclude.');
 
-let pUpper = confirm ('Would you like upper case letters in your password? Press okay to include or cancel to exclude.');
+pNum = confirm ('Would you like numbers in your password? Press okay to include or cancel to exclude');
 
-let pNum = confirm ('Would you like numbers in your password? Press okay to include or cancel to exclude');
+pSym = confirm ('Would you like symbols in your password? Press okay to include or cancel to exclude');
 
-let pSym = confirm ('Would you like symbols in your password? Press okay to include or cancel to exclude');
-
-confirm (` You've chosen the following criteria for your password:
+result = confirm (` You've chosen the following criteria for your password:
 Uppercase letters? ${pUpper}
 Numbers? ${pNum}
 Symbols? ${pSym}`);
 
+if (result === false){
+  alert('Lets try again');
+  chooseCharacters();
+} else {
+  return pNum,pSym,pUpper;
+}
+};
+chooseCharacters();
 
+};
 
 function generatePassword(){
+
+ 
 
   if (pUpper === true && pNum === true && pSym === true) {
     let strong = upperArray.concat(lowerArray,numArray,symArray);
@@ -72,6 +98,7 @@ function generatePassword(){
 };
 
 function passLength(text){
+  
   let res = ''
   for (let i=0; i<length; i++){ 
     res += text[Math.floor(Math.random() * text.length)] 
@@ -99,6 +126,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  getUserPreference();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -107,4 +135,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
