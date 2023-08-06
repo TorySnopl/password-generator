@@ -18,9 +18,11 @@ function getUserPreference() {
   function chooselength() {
     let answer = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
     
-  if (answer === false){
+  do {
     location.reload(true);
-  }else if ( answer<8 || answer>128){
+  } while (answer === false);
+
+  if ( answer<8 || answer>128){
     alert('please enter a number between 8 and 128');
     chooselength();
   } else {
