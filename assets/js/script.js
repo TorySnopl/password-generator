@@ -64,7 +64,7 @@ function generatePassword(){
     return password;
 
   } else if (pUpper===true && pNum===true && pSym===false){
-    let sitB = lowerArray.concat(upperArray,symArray);
+    let sitB = lowerArray.concat(upperArray,numArray);
     sitB.sort(()=> Math.random() - 0.5);
     password = passLength(sitB);
     return password;
