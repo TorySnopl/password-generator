@@ -1,4 +1,5 @@
 // Assignment code here
+
 upperArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 lowerArray =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -22,44 +23,64 @@ Uppercase letters? ${pUpper}
 Numbers? ${pNum}
 Symbols? ${pSym}`);
 
+
+
 function generatePassword(){
 
   if (pUpper === true && pNum === true && pSym === true) {
-    const strong = upperArray.concat(lowerArray,numArray,symArray);
+    let strong = upperArray.concat(lowerArray,numArray,symArray);
     strong.sort(()=> Math.random() - 0.5);
-    password = strong.slice(0,length);
+    password = passLength(strong);
+    return password;
+
+    
   } else if (pUpper === false && pNum === true && pSym ===true){
-    const med = lowerArray.concat(numArray,symArray);
+    let med = lowerArray.concat(numArray,symArray);
     med.sort(() => Math.random() - 0.5);
-    password = med.slice (0,length);
+    password = passLength(med);
+    return password;
+
   } else if (pNum === false && pUpper === false && pSym === true) {
-    const medium = lowerArray.concat(symArray);
+    let medium = lowerArray.concat(symArray);
     medium.sort(()=>Math.random() - 0.5);
-    password = medium.slice (0,length);
+    password = passLength(medium);
+    return password;
+
   } else if (pUpper===true && pNum===false && pSym === false) {
-    const middle = lowerArray.concat (upperArray);
+    let middle = lowerArray.concat (upperArray);
     middle.sort(()=>Math.random() - 0.5);
-    password = middle.slice (0,length);
+    password = passLength(middle);
+    return password;
+
   } else if (pUpper === false && pNum === false && pSym === false){
-    const weak = lowerArray.sort(()=>Math.random() - 0.5);
-    password = weak.slice (0,length);
+    let weak = lowerArray.sort(()=>Math.random() - 0.5);
+    password = passLength(weak);
+    return password;
+
   } else if (pUpper === true && pNum===false && pSym===true ){
-    const sitA = lowerArray.concat(upperArray,symArray);
+    let sitA = lowerArray.concat(upperArray,symArray);
     sitA.sort(()=>Math.random() - 0.5);
-    password = sitA.slice (0,length);
+    password = passLength(sitA);
+    return password;
+
   } else if (pUpper===true && pNum===true && pSym===false){
-    const sitB = lowerArray.concat(upperArray,symArray);
+    let sitB = lowerArray.concat(upperArray,symArray);
     sitB.sort(()=> Math.random() - 0.5);
-    password = sitB.slice (0,length);
+    password = passLength(sitB);
+    return password;
   }
+};
 
-  
-  return password;
-}
+function passLength(text){
+  let res = ''
+  for (let i=0; i<length; i++){ 
+    res += text[Math.floor(Math.random() * text.length)] 
+  }
+  return res;
+};
 
-while (password.length < length) {
-  generatePassword()
- };
+
+
 
 
 
