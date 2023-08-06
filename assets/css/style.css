@@ -88,10 +88,7 @@ header {
   cursor: pointer;
 }
 
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
-}
+/* Removed button css as it was disabled and unnecessary*/
 
 .float-right {
   float: right;
