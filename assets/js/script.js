@@ -10,6 +10,7 @@ symArray = ['!','@','#','$','%','^','&','*','=','+'];
 
 let length = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
 
+
 let pUpper = confirm ('Would you like upper case letters in your password? Press okay to include or cancel to exclude.');
 
 let pNum = confirm ('Would you like numbers in your password? Press okay to include or cancel to exclude');
