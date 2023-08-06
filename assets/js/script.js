@@ -1,59 +1,67 @@
 // Assignment code here
-const characters = {
-  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  lowercase: "abcdefghijklmnopqrstuvwxyz",
-  numbers: "0123456789",
-  symbols: "!@#$%^&*()_+~"
-};
+upperArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
-  let pLength = prompt("Please choose the length of your password between 8 and 128");
-  let pUpper = prompt('Do you want to use uppercase letters? type y for yes or n for no.');
-  let pNumber = prompt('Do you want to use numbers? type y for yes or n for no.');
-  let pSpecial = prompt('Do you want to use special characters? type y for yes and n for no.')
-  let res = confirm(`You want your password length set at ${pLength}. 
-  Will your password contain Uppercase letters? ${pUpper}. 
-  Will your password contain a number? ${pNumber}. 
-  Will your password contain a special character? ${pSpecial}`);
+lowerArray =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-  if (res === true) {
-    alert('generating password now');
-    generatePassword();
-   } else { 
-    alert('please try again')
-  };
+numArray =[1,2,3,4,5,6,7,8,9,0];
 
-    function generatePassword(){
-    if (pUpper === 'y' && pNumber === 'y' && pSpecial === 'y'){
-      Math.floor(Math.random() * characters.uppercase.length);
-      Math.floor(Math.random() * characters.lowercase.length);
-      Math.floor(Math.random() * characters.numbers.length);
-      Math.floor(Math.random() * characters.symbols.length);
-    } else if (pUpper === 'y' && pNumber === 'y' && pSpecial ==='n'){
-      Math.floor(Math.random() * characters.uppercase.length);
-      Math.floor(Math.random() * characters.lowercase.length);
-      Math.floor(Math.random() * characters.numbers.length);
-    } else if (pUpper === 'y' && pNumber === 'n' && pSpecial === 'n'){
-      Math.floor(Math.random() * characters.uppercase.length);
-      Math.floor(Math.random() * characters.lowercase.length);
-    } else if (pUpper == 'n' && pNumber === 'y' && pSpecial === 'y'){
-      Math.floor(Math.random() * characters.lowercase.length);
-      Math.floor(Math.random() * characters.numbers.length);
-      Math.floor(Math.random() * characters.symbols.length);
-    } else if (pUpper === 'n' && pNumber === 'n' && pSpecial === 'y'){
-      Math.floor(Math.random() * characters.lowercase.length);
-      Math.floor(Math.random() * characters.symbols.length);
-    } else if (pUpper === 'n' && pNumber === 'n' && pSpecial === 'n') {
-      Math.floor(Math.random() * characters.lowercase.length);
-    } else if (pUpper === 'n' && pNumber === 'y' && pSpecial === 'n'){
-      Math.floor(Math.random() * characters.lowercase.length);
-      Math.floor(Math.random() * characters.numbers.length);
-    };
+symArray = ['!','@','#','$','%','^','&','*','=','+'];
 
-    while (generatePassword().length<pLength);
 
-    return password;
+let length = prompt('Please enter a number between 8 and 128 for the desired number of characters in your password.');
+
+let pUpper = confirm ('Would you like upper case letters in your password? Press okay to include or cancel to exclude.');
+
+let pNum = confirm ('Would you like numbers in your password? Press okay to include or cancel to exclude');
+
+let pSym = confirm ('Would you like symbols in your password? Press okay to include or cancel to exclude');
+
+confirm (` You've chosen the following criteria for your password:
+Uppercase letters? ${pUpper}
+Numbers? ${pNum}
+Symbols? ${pSym}`);
+
+function generatePassword(){
+
+  if (pUpper === true && pNum === true && pSym === true) {
+    const strong = upperArray.concat(lowerArray,numArray,symArray);
+    strong.sort(()=> Math.random() - 0.5);
+    password = strong.slice(0,length);
+  } else if (pUpper === false && pNum === true && pSym ===true){
+    const med = lowerArray.concat(numArray,symArray);
+    med.sort(() => Math.random() - 0.5);
+    password = med.slice (0,length);
+  } else if (pNum === false && pUpper === false && pSym === true) {
+    const medium = lowerArray.concat(symArray);
+    medium.sort(()=>Math.random() - 0.5);
+    password = medium.slice (0,length);
+  } else if (pUpper===true && pNum===false && pSym === false) {
+    const middle = lowerArray.concat (upperArray);
+    middle.sort(()=>Math.random() - 0.5);
+    password = middle.slice (0,length);
+  } else if (pUpper === false && pNum === false && pSym === false){
+    const weak = lowerArray.sort(()=>Math.random() - 0.5);
+    password = weak.slice (0,length);
+  } else if (pUpper === true && pNum===false && pSym===true ){
+    const sitA = lowerArray.concat(upperArray,symArray);
+    sitA.sort(()=>Math.random() - 0.5);
+    password = sitA.slice (0,length);
+  } else if (pUpper===true && pNum===true && pSym===false){
+    const sitB = lowerArray.concat(upperArray,symArray);
+    sitB.sort(()=> Math.random() - 0.5);
+    password = sitB.slice (0,length);
+  }
+
   
-  };
+  return password;
+}
+
+while (password.length < length) {
+  generatePassword()
+ };
+
+
+
 
 
 
@@ -63,7 +71,6 @@ const characters = {
     
     
 
-console.log(generatePassword())
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
