@@ -37,3 +37,7 @@ I enjoyed the challenge of creating functions that interacted with one another a
 
 [Password Generator](https://torysnopl.github.io/password-generator/)
 
+### Code Source
+Starter code was given for the assignment.
+The length function and user preference function was made with the help of askBCS and examples from stack overflow.
+
