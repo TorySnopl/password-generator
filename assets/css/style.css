@@ -115,6 +115,8 @@ header {
   overflow: hidden;
 }
 
+/* Media Queries*/
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

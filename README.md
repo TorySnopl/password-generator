@@ -33,7 +33,10 @@ The password is displayed prominently in the box.
 
 I enjoyed the challenge of creating functions that interacted with one another and the arrays in different ways. One particular challenge was that the variables were used in multiple functions and so they needed to stay at the global scope. That meant the functions needed to update the variable rather than just define it. Another challenge that I wanted a more elegant solution too was when the user hits cancel on the length `prompt`. Ideally the page would reset, however I was not able to accomplish this. As a placeholder an alert message informs the user that no password will be generated.
 
-### Deployed Application
+## Screenshot
+![homepage](./assets/images/homepage.jpg)
+
+## Deployed Application
 
 [Password Generator](https://torysnopl.github.io/password-generator/)
 
